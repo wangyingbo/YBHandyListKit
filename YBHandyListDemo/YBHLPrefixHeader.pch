@@ -1,0 +1,14 @@
+//
+//  YBHLPrefixHeader.pch
+//  YBHandyListDemo
+//
+//  Created by 迎博 on 2018/12/8.
+//  Copyright © 2018 迎博. All rights reserved.
+//
+
+#ifndef YBHLPrefixHeader_pch
+#define YBHLPrefixHeader_pch
+
+//#import "UITableView+YBHandyList.h"
+
+#endif /* YBHLPrefixHeader_pch */
