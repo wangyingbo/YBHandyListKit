@@ -126,6 +126,12 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (cell && [cell respondsToSelector:@selector(ybht_willDisplayCellAtIndexPath:)]) {
+        [(id<YBHTableCellProtocol>)cell ybht_willDisplayCellAtIndexPath:indexPath];
+    }
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell respondsToSelector:@selector(ybht_didSelectedAtIndexPath:)]) {

@@ -47,6 +47,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)ybht_didSelectedAtIndexPath:(NSIndexPath *)indexPath;
 
+/**
+ 当前 cell will display
+ 
+ @param indexPath indexPath
+ */
+- (void)ybht_willDisplayCellAtIndexPath:(NSIndexPath *)indexPath;
+
 /** 刷新 UITableView */
 @property (nonatomic, copy) void(^ybht_reloadTableView)(void);
 
