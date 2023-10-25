@@ -163,6 +163,12 @@
     }
 }
 
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (cell && [cell respondsToSelector:@selector(ybhc_willDisplayCellAtIndexPath:)]) {
+        [(id<YBHCollectionCellProtocol>)cell ybhc_willDisplayCellAtIndexPath:indexPath];
+    }
+}
+
 #pragma mark - <UICollectionViewDelegateFlowLayout>
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {

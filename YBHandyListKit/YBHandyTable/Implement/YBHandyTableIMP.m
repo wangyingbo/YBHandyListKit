@@ -77,6 +77,12 @@
     return [self viewForHeaderFooterWithTableView:tableView config:config section:section];
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (cell && [cell respondsToSelector:@selector(ybht_willDisplayCellAtIndexPath:)]) {
+        [(id<YBHTableCellProtocol>)cell ybht_willDisplayCellAtIndexPath:indexPath];
+    }
+}
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -124,12 +130,6 @@
     }
     
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (cell && [cell respondsToSelector:@selector(ybht_willDisplayCellAtIndexPath:)]) {
-        [(id<YBHTableCellProtocol>)cell ybht_willDisplayCellAtIndexPath:indexPath];
-    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

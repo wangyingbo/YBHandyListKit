@@ -53,6 +53,10 @@
     NSLog(@"\n%@ 被点击了", self.textLabel.text);
 }
 
+- (void)ybht_willDisplayCellAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"\n %@-%@ will display!!",[NSNumber numberWithInteger:indexPath.section],[NSNumber numberWithInteger:indexPath.row]);
+}
+
 #pragma mark - event
 
 - (void)clickButton:(UIButton *)button {

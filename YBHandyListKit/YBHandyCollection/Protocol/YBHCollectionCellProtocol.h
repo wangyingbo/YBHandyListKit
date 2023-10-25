@@ -48,6 +48,13 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)ybhc_didSelectedAtIndexPath:(NSIndexPath *)indexPath;
 
+/**
+ 当前 cell will display
+ 
+ @param indexPath indexPath
+ */
+- (void)ybhc_willDisplayCellAtIndexPath:(NSIndexPath *)indexPath;
+
 /** 刷新 UICollectionView */
 @property (nonatomic, copy) void(^ybhc_reloadCollectionView)(void);
 
