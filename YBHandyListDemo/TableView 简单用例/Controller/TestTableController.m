@@ -83,7 +83,7 @@
     //[self.tableView.ybht_rowArray addObjectsFromArray:configArray];
     [self.tableView reloadDataWithRowArray:configArray.copy];
     
-    //可继承YBHandyTableIMP创建子类后，新建实例赋值ybht_tableIMP，来实现其余的delegate方法；也可以直接把想实现的代理方法在forward到当前类
+    //可继承YBHandyTableIMP创建子类后，新建实例赋值ybht_tableIMP，来实现其余的delegate方法；也可以直接把剩余的想实现的代理方法再forward到当前类
     [self.tableView forwardingTo:self];
     
     [self.tableView reloadData];
@@ -111,8 +111,8 @@
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"tableView-响应了willDisplayCell");
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"tableView-响应了didEndDisplayingCell");
 }
 
 #pragma mark - UITableViewDataSource

@@ -13,7 +13,6 @@
 
 @interface YBHandyAction ()
 @property (nonatomic, strong) NSMutableSet *forwardDelegates;
-//@property (nonatomic, strong) Protocol *actionProtocol;
 @property (nonatomic, copy) NSArray<Protocol *> *protocols;
 @end
 
