@@ -34,6 +34,7 @@
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!self.sectionArray.count) { return 0.f; }
     YBHTableSection *htSection = self.sectionArray[indexPath.section];
     id<YBHTableCellConfig> config = htSection.rowArray[indexPath.row];
     
@@ -50,6 +51,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (!self.sectionArray.count) { return 0.f; }
     YBHTableSection *htSection = self.sectionArray[section];
     id<YBHTableHeaderFooterConfig> config = htSection.header;
     
@@ -57,6 +59,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (!self.sectionArray.count) { return 0.f; }
     YBHTableSection *htSection = self.sectionArray[section];
     id<YBHTableHeaderFooterConfig> config = htSection.footer;
     
@@ -64,6 +67,7 @@
 }
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (!self.sectionArray.count) { return nil; }
     YBHTableSection *htSection = self.sectionArray[section];
     id<YBHTableHeaderFooterConfig> config = htSection.header;
     
@@ -71,6 +75,7 @@
 }
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    if (!self.sectionArray.count) { return nil; }
     YBHTableSection *htSection = self.sectionArray[section];
     id<YBHTableHeaderFooterConfig> config = htSection.footer;
     
@@ -90,10 +95,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (!self.sectionArray.count) { return 0; }
     return self.sectionArray[section].rowArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!self.sectionArray.count) { return nil; }
     YBHTableSection *htSection = self.sectionArray[indexPath.section];
     id<YBHTableCellConfig> config = htSection.rowArray[indexPath.row];
     

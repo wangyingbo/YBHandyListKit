@@ -54,6 +54,7 @@
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    if (!self.sectionArray.count) { return 0; }
     return self.sectionArray[section].rowArray.count;
 }
 
@@ -62,6 +63,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (!self.sectionArray.count) { return nil; }
     YBHCollectionSection *hcSection = self.sectionArray[indexPath.section];
     id<YBHCollectionCellConfig> config = hcSection.rowArray[indexPath.row];
 
@@ -103,6 +105,7 @@
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    if (!self.sectionArray.count) { return nil; }
     YBHCollectionSection *htSection = self.sectionArray[indexPath.section];
     
     id<YBHCollectionHeaderFooterConfig> config;
@@ -172,6 +175,7 @@
 #pragma mark - <UICollectionViewDelegateFlowLayout>
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (!self.sectionArray.count) { return CGSizeZero; }
     if (self.enabledFlowLayoutProperties && [collectionViewLayout isKindOfClass:UICollectionViewFlowLayout.self]) {
         return ((UICollectionViewFlowLayout *)collectionViewLayout).itemSize;
     }
@@ -192,6 +196,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    if (!self.sectionArray.count) { return CGSizeZero; }
     if (self.enabledFlowLayoutProperties && [collectionViewLayout isKindOfClass:UICollectionViewFlowLayout.self]) {
         return ((UICollectionViewFlowLayout *)collectionViewLayout).headerReferenceSize;
     }
@@ -203,6 +208,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section {
+    if (!self.sectionArray.count) { return CGSizeZero; }
     if (self.enabledFlowLayoutProperties && [collectionViewLayout isKindOfClass:UICollectionViewFlowLayout.self]) {
         return ((UICollectionViewFlowLayout *)collectionViewLayout).footerReferenceSize;
     }
@@ -214,6 +220,7 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section {
+    if (!self.sectionArray.count) { return 0.f; }
     if (self.enabledFlowLayoutProperties && [collectionViewLayout isKindOfClass:UICollectionViewFlowLayout.self]) {
         return ((UICollectionViewFlowLayout *)collectionViewLayout).minimumLineSpacing;
     }
@@ -222,6 +229,7 @@
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
+    if (!self.sectionArray.count) { return 0.f; }
     if (self.enabledFlowLayoutProperties && [collectionViewLayout isKindOfClass:UICollectionViewFlowLayout.self]) {
         return ((UICollectionViewFlowLayout *)collectionViewLayout).minimumInteritemSpacing;
     }
@@ -230,6 +238,7 @@
 }
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    if (!self.sectionArray.count) { return UIEdgeInsetsZero; }
     if (self.enabledFlowLayoutProperties && [collectionViewLayout isKindOfClass:UICollectionViewFlowLayout.self]) {
         return ((UICollectionViewFlowLayout *)collectionViewLayout).sectionInset;
     }
@@ -264,6 +273,7 @@
 }
 
 - (CGSize)sizeForHeaderFooterWithConfig:(id<YBHCollectionHeaderFooterConfig>)config section:(NSInteger)section sectionPack:(YBHCollectionSection *)sectionPack {
+    if (!self.sectionArray.count) { return CGSizeZero; }
     if (config && [config.ybhc_headerFooterClass respondsToSelector:@selector(ybhc_sizeForHeaderFooterWithConfig:reuseIdentifier:section:sectionPack:commonInfo:)]) {
         return [config.ybhc_headerFooterClass ybhc_sizeForHeaderFooterWithConfig:config reuseIdentifier:[self reuseIdentifierForHeaderFooterConfig:config] section:section sectionPack:sectionPack commonInfo:self.commonInfo];
     }
